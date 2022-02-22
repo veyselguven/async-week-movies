@@ -1,41 +1,60 @@
 import React from "react";
-
+//import SearcBar from "./SearchBar";
+import MovieList from "./MovieList";
 class App extends React.Component {
   state = {
     movies: [
       {
         id: 1,
-        name: "The Flash",
+        name: "RIPPER UNTOL",
         rating: 8.3,
         overview:
-          "This is a wider card with supporting text below as a natural lead-in to additional content.",
+          "A detective and medical examiner join forces to solve series of horrific murders in Victorian",
         imageURL:
-          "https://image.tmdb.org/t/p/w220_and_h330_face/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg",
+          "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dpELyqPFcAhpyaCRFnoUEpQrqZU.jpg",
       },
 
       {
         id: 2,
-        name: "Interstellar",
+        name: "Lucifer",
         rating: 6.8,
         overview:
-          "This is a wider card with supporting text below as a natural lead-in to additional content.",
+          "Lucifer Morningstar abandoned his throne and retired to Los Angeles, where he has teamed up with LAPD detective Chloe Decker to take down criminals. ",
         imageURL:
-          "https://image.tmdb.org/t/p/w220_and_h330_face/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+          "https://www.themoviedb.org/t/p/w1280/ekZobS8isE6mA53RAiGDG93hBxL.jpg",
       },
 
       {
         id: 3,
-        name: "Arrow",
+        name: "Texas Chainsaw Massacre(2002)",
         rating: 7.9,
         overview:
-          "This is a wider card with supporting text below as a natural lead-in to additional content.",
+          "In this sequel, influencers looking to breathe new life into a Texas ghost town encounter Leatherface, an infamous killer who wears a mask of human skin.",
         imageURL:
-          "https://image.tmdb.org/t/p/w220_and_h330_face/gKG5QGz5Ngf8fgWpBsWtlg5L2SF.jpg",
+          "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/meRIRfADEGVo65xgPO6eZvJ0CRG.jpg",
       },
     ],
   };
+
+  deleteMovie = (movie) => {
+    const leftMovieList = this.state.movies.filter((m) => m.id !== movie.id);
+
+    this.setState({
+      movies: leftMovieList,
+    });
+  };
   render() {
-    return <h1>My movies</h1>;
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12"></div>
+        </div>
+        <MovieList
+          movies={this.state.movies}
+          deleteMovieProp={this.deleteMovie}
+        />
+      </div>
+    );
   }
 }
 
